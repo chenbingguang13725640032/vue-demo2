@@ -1,25 +1,52 @@
 <template>
   <div id="app">
-    <img src="./assets/logo.png">
-    123456<p>sdjaskjdaskljd</p>
-    12
-    <router-view/>
+   <div class="header">
+     <h1>陈炳光vue-webapp2</h1>
+   </div>
+      <router-view></router-view>
   </div>
 </template>
 
 <script>
+
 export default {
   name: 'App'
 }
 </script>
 
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+<style scoped lang="scss">
+  #app{
+    padding-bottom: 50px;
+    .header{
+      width: 100%;
+      height: 50px;
+      background-color: #e54847;
+     
+      h1{
+        text-align: center;
+        font-size: 18px;
+        color: white;
+        font-weight: 400;
+        line-height: 50px;
+      }
+    }
+  }
+
+  
+//   .v-enter{
+//     opacity: 0;
+//     transform: translateX(100%);
+    
+//   }
+
+//  .v-leave-to {
+//     opacity: 0;
+//     transform: translateX(-100%);
+
+//  }
+
+//   .v-enter-active,
+//   .v-leave-active{
+//     transition: all .2s ease;
+//   }
 </style>
