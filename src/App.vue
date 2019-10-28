@@ -17,17 +17,21 @@ export default {
 <style scoped lang="scss">
   #app{
     padding-bottom: 50px;
+    padding-top: 94px;
     .header{
       width: 100%;
       height: 50px;
       background-color: #e54847;
-     
+      position: fixed;
+      top: 0;
       h1{
         text-align: center;
         font-size: 18px;
         color: white;
         font-weight: 400;
         line-height: 50px;
+        margin: 0;
+        z-index: 999;
       }
     }
   }

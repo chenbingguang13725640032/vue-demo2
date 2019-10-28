@@ -107,6 +107,9 @@ export default {
            img{
              width: 50px;
            }
+            max-width: 135px;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         font-size: 16px;
         font-weight: bold;
        color: black;
@@ -127,6 +130,7 @@ export default {
         align-items: center;
         margin: 0;
          input{
+           text-align: center;
         color: white;
         width: 47px;
         height: 27px;
@@ -134,6 +138,10 @@ export default {
         border: none;
         border-radius: 5px;
         outline: none;
+       position: relative;
+       z-index: -1;
+       line-height: 0;
+       padding: 0;
       }
       }
     }

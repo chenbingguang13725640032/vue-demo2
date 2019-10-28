@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div style="position:fixed;top:50px;">
+      <div style="position:fixed;width:100%;">
       <ul class="nav">
           <router-link tag="li" to="/movie/city">
               <span>北京</span>
@@ -15,26 +16,26 @@
               <i class="iconfont icon-soushuo"></i>
           </router-link>
       </ul>
-     
+     </div>
   </div>
 </template>
 
 <script>
-export default {
-    name:"navbar",
-    data(){
-        return {
-            flag:true
+    export default {
+        name: "navbar",
+        data() {
+            return {
+                flag: true
+            }
+        },
+        methods: {
+
         }
-    },
-    methods:{
-       
     }
-}
 </script>
 
 <style scoped lang="scss">
-    .nav{
+    .nav {
         display: flex;
         list-style-type: none;
         justify-content: space-around;
@@ -44,21 +45,22 @@ export default {
         font-size: 15px;
         font-weight: bold;
         color: gray;
-        .router-link-active{
+        border-bottom: 1px solid rgb(223, 218, 218);
+        .router-link-active {
             color: red;
             border-bottom: 2px solid red;
         }
-        .ling{
-             color: red;
+        .ling {
+            color: red;
             border-bottom: 2px solid red;
         }
-        li:nth-child(1){
-            i{
+        li:nth-child(1) {
+            i {
                 font-size: 13px;
             }
         }
-         li:nth-child(4){
-            i{
+        li:nth-child(4) {
+            i {
                 font-size: 18px;
                 color: red;
             }

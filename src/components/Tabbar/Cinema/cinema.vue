@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="cinema-container">
       cinema
      <tabbar></tabbar>
   </div>
@@ -24,6 +24,8 @@ export default {
 }
 </script>
 
-<style>
-
+<style scoped lang="scss">
+.cinema-container{
+    margin-top: -44px;
+}
 </style>
