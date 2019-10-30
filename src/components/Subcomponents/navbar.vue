@@ -1,5 +1,5 @@
 <template>
-  <div style="position:fixed;top:50px;">
+  <div style="position:fixed;top:50px;z-index:777">
       <div style="position:fixed;width:100%;">
       <ul class="nav">
           <router-link tag="li" to="/movie/city">
@@ -46,6 +46,7 @@
         font-weight: bold;
         color: gray;
         border-bottom: 1px solid rgb(223, 218, 218);
+        
         .router-link-active {
             color: red;
             border-bottom: 2px solid red;

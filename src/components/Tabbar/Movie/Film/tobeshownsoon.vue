@@ -80,6 +80,15 @@
 .v-leave-active{
   transition: all .3s ease;
 }
+
+.v-leave-active{
+    position: absolute;
+}
+
+.v-move{
+    transition: all .5s ease;
+}
+
     .ul{
     list-style-type: none;
     li{

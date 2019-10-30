@@ -18,12 +18,15 @@ export default {
   #app{
     padding-bottom: 50px;
     padding-top: 94px;
+ 
+  
     .header{
       width: 100%;
       height: 50px;
       background-color: #e54847;
       position: fixed;
       top: 0;
+      z-index: 888;
       h1{
         text-align: center;
         font-size: 18px;
