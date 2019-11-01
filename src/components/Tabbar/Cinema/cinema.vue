@@ -17,6 +17,7 @@
      </div>
      <div class="cinemabody">
          <ul>
+             <update @tijiao="getcinemalist">
              <transition-group appear :ducation="500">
              <li v-for="item in cinemalist" :key="item.id">
                  <p>{{item.nm}}<span>{{item.sellPrice}}</span><span>元起</span></p>
@@ -28,6 +29,7 @@
                  </p>
              </li>
              </transition-group>
+             </update>
          </ul>
      </div>
   </div>
@@ -36,6 +38,7 @@
 
 <script>
 import tabbar from "../../Subcomponents/tabbar"
+import update from "../../Subcomponents/update"
 export default {
     name:"cinema",
     data(){
@@ -94,7 +97,8 @@ export default {
        } 
     },
     components:{
-        tabbar
+        tabbar,
+        update
     }
 }
 </script>

@@ -2,11 +2,11 @@ import Vue from 'vue'
 import App from './App'
 import router from './router'
 import "./assets/iconfont/iconfont.css"
-import animate from "animate.css"
 import Vuex from "vuex"
 import axios from "axios"
 import "./mui/dist/css/mui.css"
-
+import Mint from "mint-ui"
+Vue.use(Mint)
 Vue.prototype.$http = axios;
 Vue.use(Vuex)
 

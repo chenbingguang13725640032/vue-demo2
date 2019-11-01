@@ -2,12 +2,13 @@
   <div>
     <navbar></navbar>
    <tabbar></tabbar>
-    <ul class="ul">
-      <transition-group appear :duaction="500">
+    <ul class="ul" ref="ul">
+      <update @tijiao="getwelllist">
+      <transition-group appear :duaction="500" tag="div">
            <li v-for="item in welllist" :key="item.id">
-          <img :src="item.img | img(64 +'.'+113)" alt="">
+          <img :src="item.img | img(64 +'.'+113)" alt="" @click="info">
         <div class="div">
-        <h1>
+        <h1 @click="info">
           {{item.nm}}
           <img src="../../../../assets/下载.png" v-if="item.version"></img>
         </h1>
@@ -20,6 +21,7 @@
         </p>
         </li>
       </transition-group>
+      </update>
     </ul>
   </div>
 </template>
@@ -28,35 +30,42 @@
 import tabbar from "../../../Subcomponents/tabbar"
 import navbar from "../../../Subcomponents/navbar"
 import mui from "../../../../mui/dist/js/mui.min.js"
+import update from "../../../Subcomponents/update"
 export default {
     name:"wellreceived",
     data(){
         return {
           welllist:[],
-          id:1
+          id:1,
+         
         }
     },
-   created(){
-     this.getwelllist();
-   },
+    created(){
+       this.getwelllist();
+    },
    mounted(){
      mui.init({
 				swipeBack: true //启用右滑关闭功能
-			});
+      });
    },
     methods:{
       getwelllist(){
         this.$http.get("/api/movieOnInFoList?cityId=" + this.id).then(res=>{
           this.welllist = res.data.data.movieList;
+         
         })
         .catch(err=>{
           mui.alert("请求列表参数错误！");
         })
+      },
+      info(){
+        console.log(1)
       }
     },
     components:{
       tabbar,
-      navbar
+      navbar,
+      update
     }
 }
 </script>
@@ -84,6 +93,9 @@ export default {
 
   .ul{
     list-style-type: none;
+  
+    
+    
     li{
       display: flex;
       justify-content: space-around;
@@ -129,6 +141,7 @@ export default {
         margin: 0;
       }
       }
+      
      
       img{
         width: 64px;

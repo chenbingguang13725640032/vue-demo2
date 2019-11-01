@@ -87,6 +87,7 @@ export default {
         cityjump(i){
             var h2 = this.$refs.h2;
             document.documentElement.scrollTop= h2[i].offsetTop - 95 ; 
+           console.log(1)
         }
     },
     components:{
@@ -113,6 +114,7 @@ export default {
                 display: flex;
                 list-style-type: none;
                 flex-wrap: wrap;
+               
                 li{
                     width: 103px;
                     margin: 16px  0 0 11px;
@@ -139,6 +141,7 @@ export default {
                 ul{
                     padding-left: 11px;
                     margin-top: 8px;
+                     list-style-type: none;
                     li{
                         line-height: 30px;
                     }

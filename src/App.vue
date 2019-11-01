@@ -18,8 +18,8 @@ export default {
   #app{
     padding-bottom: 50px;
     padding-top: 94px;
- 
-  
+    height: 100%;
+    
     .header{
       width: 100%;
       height: 50px;

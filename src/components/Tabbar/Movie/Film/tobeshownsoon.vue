@@ -3,7 +3,8 @@
         <navbar></navbar>
         <tabbar></tabbar>
         <ul class="ul">
-          <transition-group appear :duaction="500">
+          <update @tijiao="gettolist">
+          <transition-group appear :duaction="500" tag="div">
              <li v-for="item in tolist" :key="item.id">
           <img :src="item.img | img(64 + '.' + 96)" alt="">
         <div class="div">
@@ -20,6 +21,7 @@
         </p>
         </li>
          </transition-group>
+       </update>
         </ul>
           
     </div>
@@ -29,18 +31,20 @@
     import navbar from "../../../Subcomponents/navbar"
     import tabbar from "../../../Subcomponents/tabbar"
     import mui from "../../../../mui/dist/js/mui.min.js"
+    import update from "../../../Subcomponents/update"
     export default {
         name: "tobeshownsoon",
         data() {
             return {
-                id:1,
-                tolist:[]
+                id:10,
+                tolist:[],
+               
             }
         },
         mounted(){
             mui.init({
 			        swipeBack: true //启用右滑关闭功能
-			        });
+              });
         },
         created(){
           this.gettolist()
@@ -54,17 +58,19 @@
                       }
                     })
                     this.tolist = res.data.data.comingList;
-                    console.log(this.tolist);
+                   
 
                 })
                 .catch(err=>{
                     mui.alert("请求列表参数错误")
                 })
-            }
+            },
+           
         },
         components: {
             navbar,
-            tabbar
+            tabbar,
+            update
         }
     }
 </script>
@@ -89,8 +95,11 @@
     transition: all .5s ease;
 }
 
+
+
     .ul{
     list-style-type: none;
+  
     li{
       display: flex;
       justify-content: space-around;
@@ -162,4 +171,7 @@
       }
     }
   }
+
+
+ 
 </style>
