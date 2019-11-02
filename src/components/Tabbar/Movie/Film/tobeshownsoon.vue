@@ -2,6 +2,7 @@
     <div>
         <navbar></navbar>
         <tabbar></tabbar>
+        <loading :isshow="isloading"></loading>
         <ul class="ul">
           <update @tijiao="gettolist">
           <transition-group appear :duaction="500" tag="div">
@@ -36,9 +37,8 @@
         name: "tobeshownsoon",
         data() {
             return {
-                id:10,
                 tolist:[],
-               
+                isloading:true
             }
         },
         mounted(){
@@ -51,14 +51,14 @@
         },
         methods: {
             gettolist(){
-                this.$http.get("/api/movieComingList?cityId=" + this.id).then(res=>{
+                this.$http.get("/api/movieComingList?cityId=" + this.$store.state.id).then(res=>{
                     res.data.data.comingList.forEach(item=>{
                       if(!item.showInfo){
                         item.showInfo = "即将上映"
                       }
                     })
                     this.tolist = res.data.data.comingList;
-                   
+                   this.isloading = false;
 
                 })
                 .catch(err=>{

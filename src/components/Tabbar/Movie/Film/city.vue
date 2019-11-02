@@ -2,18 +2,19 @@
   <div>
       <navbar></navbar>
       <tabbar></tabbar>
+      <loading :isshow="isloading"></loading>
       <div class="city-body">
           <div class="hot-city">
               <h2>热门城市</h2>
               <ul>
-                  <li v-for="item in hotcitylist" :key="item.id">{{item.nm}}</li>
+                  <li v-for="item in hotcitylist" :key="item.id" @click="cities(item.id,item.nm)">{{item.nm}}</li>
               </ul>
           </div>
           <div class="sort-city">
               <div class="city-block" v-for="item in citylist" :key="item.index">
                   <h2 ref="h2">{{item.index}}</h2>
                   <ul>
-                      <li v-for="every in item.list" :key="every.id">{{every.nm}}</li>
+                      <li v-for="every in item.list" :key="every.id" @click="cities(every.id,every.nm)">{{every.nm}}</li>
                   </ul>
               </div>
           </div>
@@ -34,7 +35,8 @@ export default {
     data(){
         return {
             citylist:[],
-            hotcitylist:[]
+            hotcitylist:[],
+            isloading:true
         }
     },
     created(){
@@ -80,7 +82,8 @@ export default {
                         return 0
                     }
                 })
-                this.citylist = newarr;               //以城市首字母拼音分类好的数据，以城市块分类
+                this.citylist = newarr;
+                this.isloading = false;               //以城市首字母拼音分类好的数据，以城市块分类
                 console.log(this.citylist);
             })
         },
@@ -88,6 +91,12 @@ export default {
             var h2 = this.$refs.h2;
             document.documentElement.scrollTop= h2[i].offsetTop - 95 ; 
            console.log(1)
+        },
+        cities(id,nm){
+           localStorage.setItem("id",JSON.stringify(id));
+           localStorage.setItem("nm",JSON.stringify(nm)); 
+           this.$store.commit("updateid",{id:id,nm:nm})
+           this.$router.push("wellreceived")
         }
     },
     components:{

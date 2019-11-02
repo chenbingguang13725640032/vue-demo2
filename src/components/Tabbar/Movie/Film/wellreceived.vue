@@ -2,6 +2,7 @@
   <div>
     <navbar></navbar>
    <tabbar></tabbar>
+   <loading :isshow="isloading"></loading>
     <ul class="ul" ref="ul">
       <update @tijiao="getwelllist">
       <transition-group appear :duaction="500" tag="div">
@@ -36,8 +37,8 @@ export default {
     data(){
         return {
           welllist:[],
-          id:1,
          
+          isloading:true
         }
     },
     created(){
@@ -50,9 +51,9 @@ export default {
    },
     methods:{
       getwelllist(){
-        this.$http.get("/api/movieOnInFoList?cityId=" + this.id).then(res=>{
+        this.$http.get("/api/movieOnInFoList?cityId=" + this.$store.state.id).then(res=>{
           this.welllist = res.data.data.movieList;
-         
+          this.isloading = false;
         })
         .catch(err=>{
           mui.alert("请求列表参数错误！");

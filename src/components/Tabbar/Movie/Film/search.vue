@@ -2,12 +2,10 @@
   <div>
      <navbar></navbar>
      <tabbar></tabbar>
-  
      <div class="search">
        <i class="iconfont icon-search"></i>
        <input type="text" id="ip1" v-model="msg">
      </div>
-    
      <div class="tree">
        <span>电影/电视剧/综艺</span>
      </div>
@@ -54,7 +52,7 @@ export default {
       "msg":function(newVal){
         clearTimeout(this.timeId);
           this.timeId = setTimeout(()=>{
-          this.$http.get("/api/searchList?cityId=10&kw=" + newVal).then(res=>{
+          this.$http.get("/api/searchList?cityId= " + this.$store.state.id + "&kw=" + newVal).then(res=>{
           if(!res.data.data.movies){
             return;
           }

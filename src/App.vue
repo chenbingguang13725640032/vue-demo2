@@ -8,9 +8,42 @@
 </template>
 
 <script>
-
+import mui from "./mui/dist/js/mui.min.js"
 export default {
-  name: 'App'
+  name: 'App',
+  data(){
+    return {
+
+    }
+  },
+  mounted(){
+    mui.init({
+				swipeBack: true //启用右滑关闭功能
+      });
+      this.messagebox();
+  },
+  methods:{
+    messagebox(){
+     this.$http.get("/api/getLocation").then(res=>{
+      var that = this;
+      var num = JSON.parse(localStorage.getItem("id"));  
+      var city = JSON.parse(localStorage.getItem("nm"));
+      num = res.data.data.id;
+      city = res.data.data.nm;
+      if(res.data.data.id === that.$store.state.id){
+              return;
+          }
+      mui.confirm(res.data.data.nm, '当前城市定位', ['取消','确认'], function(e) {
+					if (e.index == 1) {
+           localStorage.setItem("id",JSON.stringify(num));
+           localStorage.setItem("nm",JSON.stringify(city)); 
+           that.$store.commit("msgboxupdateid",{id:res.data.data.id,nm:res.data.data.nm})
+           location.reload();
+					} 
+        })
+       })   
+    }
+  }
 }
 </script>
 

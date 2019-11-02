@@ -3,7 +3,7 @@
       <div style="position:fixed;width:100%;">
       <ul class="nav">
           <router-link tag="li" to="/movie/city">
-              <span>北京</span>
+              <span>{{$store.state.nm}}</span>
               <i class="iconfont icon-daosanjiao-"></i>
           </router-link>
           <router-link  tag="li" to="/movie/wellreceived" >

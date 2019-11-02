@@ -1,6 +1,7 @@
 <template>
   <div class="cinema-container">
      <tabbar></tabbar>
+     <loading :isshow="isloading"></loading>
      <div class="cinemanav">
          <div>
             <span>全城</span>
@@ -43,7 +44,8 @@ export default {
     name:"cinema",
     data(){
         return {
-            cinemalist:[]
+            cinemalist:[],
+            isloading:true
         }
     },
     created(){
@@ -51,7 +53,7 @@ export default {
     },
     methods:{
         getcinemalist(){
-            this.$http.get("/api/cinemaList?cityId=10").then(res=>{
+            this.$http.get("/api/cinemaList?cityId=" + this.$store.state.id).then(res=>{
                 var msg = res.data.data.cinemas
                 for(var i = 0;i<msg.length;i++){
                     var mit = msg[i].tag;
@@ -62,6 +64,7 @@ export default {
                     }
                 }
                 this.cinemalist = msg;
+                this.isloading = false;
             })
             .catch(err=>{
                 console.log(err);

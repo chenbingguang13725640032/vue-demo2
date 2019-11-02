@@ -13,7 +13,7 @@ export default new Router({
   routes: [
     {path:"/",redirect:"/movie"},
     {path:"/movie",redirect:"/movie/wellreceived"},
-    {path:"/movie/wellreceived",component:wellreceived},
+    {path:"/movie/wellreceived",component:wellreceived,name:wellreceived},
     {path:"/movie/city",component:city},
     {path:"/movie/tobeshownsoon",component:tobeshownsoon},
     {path:"/movie/search",component:search},

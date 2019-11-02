@@ -39,7 +39,7 @@ export default {
         background-color: white;
         border-top: 2px solid #d6d5d3;
         position: fixed;;
-        z-index: 999;
+        z-index: 222;
         bottom: 0;
         display: flex;
          justify-content: space-around;
