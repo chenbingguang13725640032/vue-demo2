@@ -11,6 +11,7 @@ import movieinfo from "../components/Tabbar/Movie/Info/movieinfo.vue"
 Vue.use(Router)
 
 export default new Router({
+  mode:"hash",
   routes: [
     { path: "/", redirect: "/movie" },
     { path: "/movie", redirect: "/movie/wellreceived" },
